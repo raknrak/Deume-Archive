@@ -1,0 +1,78 @@
+// 말줄임 ellipsis
+@mixin ellipsis($line: 1) {
+    @if ($line == 1) {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    } @else {
+      display: -webkit-box;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: $line;    
+      /*! autoprefixer: off */
+      -webkit-box-orient: vertical;
+      /* autoprefixer: on */
+    }
+}
+
+
+// clearfix
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+  
+  
+// flexbox
+$flex-map: (
+    // 배열이라고 하나 이렇게 값을 펼쳐논다.  key : 값 형태.
+    start: flex-start,
+    end: flex-end,
+    between: space-between,
+    around: space-around,
+    stretch: stretch,
+    center: center
+);
+  
+@function _get-flex-value($key) {
+    //입력한 키값($key)를 받아서
+    @return map-get(
+        $flex-map,
+        $key
+    ); // @return 리턴한다. 배열에서 입력한 키값에 맞는 값을.
+}
+  
+@mixin flexbox($js: center, $ai: center) {
+    // : 를 붙히고 값을 써준 것은 default값을 설정함
+    display: flex;
+    align-items: _get-flex-value($ai);
+    justify-content: _get-flex-value($js);
+}
+
+
+// screen out
+@mixin ir_pm {
+    display: block;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -9999px;
+}
+
+// scrollbar
+@mixin scrollbar {
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 20px
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        background-color: #dbdbdb;
+    }
+    
+  }
+  

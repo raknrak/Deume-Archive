@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.chunjae.template.mapper.TemplateMapper">
+
+    <insert id="insertTemplate" parameterType="kr.co.chunjae.template.dto.TemplateDTO"
+            useGeneratedKeys="true" keyColumn="idx" keyProperty="idx">
+        INSERT
+        INTO tb_template(subcate_idx, type_idx, name, source, explanation, display, original, saved, keyword)
+        VALUES(#{subcateIdx}, #{typeIdx}, #{name}, #{source}, #{explanation}, #{display}, #{original}, #{saved}, #{keyword})
+    </insert>
+
+    <insert id="insertTemplateThumbnailList" parameterType="java.util.Map">
+        INSERT
+        INTO tb_template_thumbnail(template_idx, original, saved, orders)
+        VALUES
+        <foreach collection="thumbnailList" item="thumbnail" separator=",">
+            (#{templateIdx}, #{thumbnail.original}, #{thumbnail.saved}, #{thumbnail.orders})
+        </foreach>
+    </insert>
+
+    <select id="getThumbnailList" resultType="kr.co.chunjae.template.dto.TemplateThumbnailDTO">
+        select saved, template_idx, saved_path, upload_path, orders
+        from tb_template_thumbnail
+        where template_idx = #{idx}
+    </select>
+
+    <select id="getTemplateByIdx" parameterType="Integer" resultType="kr.co.chunjae.template.dto.TemplateDTO">
+        select idx, subcate_idx, type_idx, name, source, explanation, display, original, saved, upload_path,
+            register_date, update_date, keyword
+        from tb_template
+        where idx = #{idx}
+    </select>
+
+    <delete id="deleteTemplateThumbnailByIdx" parameterType="Integer">
+        delete
+        from tb_template_thumbnail
+        where template_idx = #{idx}
+    </delete>
+
+    <update id="updateTemplate" parameterType="kr.co.chunjae.template.dto.TemplateDTO">
+        UPDATE tb_template
+        SET subcate_idx = #{subcateIdx}, type_idx = #{typeIdx}, name = #{name}, source = #{source}, explanation = #{explanation},
+        display = #{display}, original = #{original}, saved = #{saved}, update_date = now(), keyword = #{keyword}
+        WHERE idx = #{idx}
+    </update>
+</mapper>

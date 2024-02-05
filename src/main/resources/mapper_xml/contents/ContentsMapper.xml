@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.chunjae.contents.mapper.ContentsMapper">
+
+    <insert id="insertContents" parameterType="kr.co.chunjae.contents.dto.ContentsDTO"
+            useGeneratedKeys="true" keyColumn="idx" keyProperty="idx">
+        INSERT
+        INTO tb_contents(subcate_idx, type_idx, name, source, explanation, display, original, saved, keyword)
+        VALUES(#{subcateIdx}, #{typeIdx}, #{name}, #{source}, #{explanation}, #{display}, #{original}, #{saved}, #{keyword})
+    </insert>
+
+    <resultMap id="contentsWithThumbnails" type="kr.co.chunjae.contents.dto.ContentsDTO">
+        <id column="tc_idx" property="idx" jdbcType="INTEGER" />
+        <result column="tc_subcate_idx" property="subcateIdx" jdbcType="INTEGER" />
+        <result column="tc_type_idx" property="typeIdx" jdbcType="INTEGER" />
+        <result column="tc_name" property="name" jdbcType="VARCHAR" />
+        <result column="tc_source" property="source" jdbcType="VARCHAR" />
+        <result column="tc_explanation" property="explanation" jdbcType="VARCHAR" />
+        <result column="tc_display" property="display" jdbcType="INTEGER" />
+        <result column="tc_original" property="original" jdbcType="VARCHAR" />
+        <result column="tc_saved" property="saved" jdbcType="VARCHAR" />
+        <result column="tc_upload_path" property="uploadPath" jdbcType="VARCHAR" />
+        <result column="tc_register_date" property="registerDate" jdbcType="TIMESTAMP" />
+        <result column="tc_update_date" property="updateDate" jdbcType="TIMESTAMP" />
+        <result column="tc_keyword" property="keyword" jdbcType="VARCHAR" />
+
+        <result column="tm_maincate_idx" property="maincateIdx" jdbcType="INTEGER" />
+
+        <collection property="contentsThumbnailList" ofType="kr.co.chunjae.contents.dto.ContentsThumbnailDTO">
+            <id column="tct_idx" property="idx" jdbcType="INTEGER" />
+            <result column="tct_contents_idx" property="contentsIdx" jdbcType="INTEGER" />
+            <result column="tct_original" property="original" jdbcType="VARCHAR" />
+            <result column="tct_saved" property="saved" jdbcType="VARCHAR" />
+            <result column="tct_upload_path" property="uploadPath" jdbcType="VARCHAR" />
+            <result column="tct_saved_path" property="savedPath" jdbcType="VARCHAR" />
+            <result column="tct_orders" property="orders" jdbcType="INTEGER" />
+        </collection>
+    </resultMap>
+
+    <select id="selectContents" parameterType="java.lang.Integer" resultMap="contentsWithThumbnails">
+        SELECT tc.idx tc_idx, subcate_idx tc_subcate_idx, tc.type_idx tc_type_idx, tc.name tc_name, tc.source tc_source,
+            tc.explanation tc_explanation, display tc_display, tc.original tc_original, tc.saved tc_saved,
+            tc.upload_path tc_upload_path, tc.register_date tc_register_date, tc.update_date tc_update_date,
+            tc.keyword tc_keyword,
+            tct.idx tct_idx, tct.contents_idx tct_contents_idx, tct.original tct_original, tct.saved tct_saved,
+            tct.upload_path tct_upload_path, tct.saved_path tct_saved_path, tct.orders tct_orders,
+            tm.idx tm_maincate_idx
+        FROM tb_contents tc INNER JOIN tb_contents_thumbnail tct ON tc.idx = tct.contents_idx
+            INNER JOIN tb_subcategory ts ON tc.subcate_idx = ts.idx
+            INNER JOIN tb_maincategory tm ON ts.maincate_idx = tm.idx
+        WHERE tc.idx = #{contentsIdx}
+    </select>
+
+    <insert id="insertContentsThumbnailList" parameterType="java.util.Map">
+        INSERT
+        INTO tb_contents_thumbnail(contents_idx, original, saved, orders)
+        VALUES
+        <foreach collection="thumbnailList" item="thumbnail" separator=",">
+            (#{contentsIdx}, #{thumbnail.original}, #{thumbnail.saved}, #{thumbnail.orders})
+        </foreach>
+    </insert>
+
+    <delete id="deleteContentsThumbnailByContentsIdx">
+        DELETE
+        FROM tb_contents_thumbnail
+        WHERE contents_idx = #{contentsIdx}
+    </delete>
+
+    <update id="updateContents" parameterType="kr.co.chunjae.contents.dto.ContentsDTO">
+        UPDATE tb_contents
+        SET subcate_idx = #{subcateIdx}, type_idx = #{typeIdx}, name = #{name}, source = #{source}, explanation = #{explanation},
+            display = #{display}, original = #{original}, saved = #{saved}, update_date = now(), keyword = #{keyword}
+        WHERE idx = #{idx}
+    </update>
+
+    <select id="selectContentsMainImage" resultType="java.util.Map">
+        SELECT upload_path uploadPath, saved
+        FROM tb_contents
+        WHERE idx = #{contentsIdx}
+    </select>
+
+    <select id="selectContentsThumbnail" resultType="java.util.Map">
+        SELECT upload_path uploadPath, saved
+        FROM tb_contents_thumbnail
+        WHERE contents_idx = #{contentsIdx}
+    </select>
+</mapper>

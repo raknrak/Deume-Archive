@@ -1,0 +1,335 @@
+.login_wrap {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 360px;
+    height: calc(100vh - 60px);
+    min-height: 700px;
+    margin: 0 auto;
+    padding: 50px 30px;
+    .login_title {
+        font-size: 30px;
+        font-weight: 600;
+        text-align: center;
+        line-height: 1;
+        margin-bottom: 30px;
+        img { 
+            width: 91px;
+            padding-bottom: 7px;
+            vertical-align: middle;
+        }
+    }
+    .line {
+        border-top: 1px solid #dbdbdb;
+        padding-top: 30px;
+    }
+    .pc_none { display: none;}
+    .login_msg {
+        margin-bottom: 30px;
+        line-height: 18px;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .form_row {
+        position: relative;
+        & + .form_row {
+            margin-top: 15px;
+        }
+        &.done {
+            .tit {
+                color: #80c269 !important;
+<<<<<<< HEAD
+                background: url("/common/images/ico_form_done.png") no-repeat right top;
+=======
+                background: url("../images/ico_form_done.png") no-repeat right top;
+>>>>>>> main
+            }
+        }
+        .tit { 
+            font-size: 14px;
+            color: #191919;
+            padding-left: 10px;
+            padding-bottom: 8px;
+        }
+        .input_wrap {
+            @include flexbox (start, center);
+        }
+        input {
+            width: 100%;
+            max-width: 300px;
+            height: 45px;
+            line-height: 45px;
+            border: 1px solid #dbdbdb;
+            border-radius: 10px;
+            padding-left: 10px;
+            font-size: 14px;
+            color: #191919;
+
+            &:focus {
+                border: 1px solid #191919;
+            }
+            &::placeholder {
+                font-size: 12px;
+                color: #a1a1a1;
+            }
+        }
+        .input_btn {
+            font-size: 14px;
+            border-radius: 10px;
+            height: 45px;
+            line-height: 45px;
+            margin-left: 5px;
+        }
+        & + .check_box {
+            margin-top: 28px;
+        }
+    }
+
+    // check box
+    .login_check_box {
+        @include flexbox(center);
+        padding-top: 25px;
+        input[type="checkbox"] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background: #ffffff;
+            border-radius: 0;
+            border: 1px solid #dbdbdb;
+            cursor: pointer;
+            height: 15px;
+            outline: 0;
+            width: 15px;
+            &:checked {
+<<<<<<< HEAD
+            background: url(/common/images/ico_checkbox_check_s.png) no-repeat;
+=======
+            background: url(../images/ico_checkbox_check_s.png) no-repeat;
+>>>>>>> main
+            border: 0;
+            }
+            &:checked::after {
+            display: block;
+            }
+            & + label {
+                font-size: 14px;
+                padding-left: 4px;
+                font-weight: 500;
+                cursor: pointer;
+            }
+        }
+        & + .btn {
+            margin-top: 30px;
+        }
+    }
+
+    .sns_login {
+        li {
+            & + li {
+                margin-top: 10px;
+            }
+        }
+        .btn {
+            color: #191919;
+            font-size: 16px;
+            background-repeat: no-repeat;
+            background-position: left 30px center;
+            &.kakao { 
+                background-color: #ffffff200;
+<<<<<<< HEAD
+                background-image: url("/common/images/ico_kakao.png");
+=======
+                background-image: url("../images/ico_kakao.png");
+>>>>>>> main
+            }
+            &.naver { 
+                color: #ffffff;
+                background-color: #47b748; 
+<<<<<<< HEAD
+                background-image: url("/common/images/ico_naver.png");
+            }
+            &.google { 
+                background-color: #f3f4f5;
+                background-image: url("/common/images/ico_google.png");
+            }
+            &.email { 
+                background-color: #ededed;
+                background-image: url("/common/images/ico_email.png");
+=======
+                background-image: url("../images/ico_naver.png");
+            }
+            &.google { 
+                background-color: #f3f4f5;
+                background-image: url("../images/ico_google.png");
+            }
+            &.email { 
+                background-color: #ededed;
+                background-image: url("../images/ico_email.png");
+>>>>>>> main
+            }
+        }
+
+    }
+    .login_link_wrap {
+        margin: 28px 0;
+    }
+    .login_link {
+        display: block;
+        font-size: 14px;
+        font-weight: 500;
+        text-align: center;
+        p { padding-bottom: 10px;}
+        strong {
+            font-weight: 600;
+            margin-left: 5px;
+        }
+        & + .login_link { margin-top: 10px;}
+    }
+    .btn.tsherpa {
+        @include flexbox(center);
+        border: 1px solid #dbdbdb;
+        //margin-top: 30px;
+        img { width: 59px; margin-right: 5px;}
+    }
+    .policy {
+        margin: 28px 0 30px;
+        line-height: 19px;
+        font-size: 12px;
+        color: #a1a1a1;
+        text-align: center;
+        a {
+            color: #a1a1a1;
+            font-weight: 500;
+            border-bottom: 1px solid #c7c7c7;
+        }
+    }
+    .confirm {
+        text-align: center;
+        .confirm_msg {
+            font-size: 18px;
+            margin-top: 25px;
+        }
+    }
+    .receive_chek {
+        @include flexbox (between, center);
+        padding: 7px 10px 0;
+        font-size: 14px;
+        color: #a1a1a1;
+        .recieve_tit {
+            color: #a1a1a1;
+        }
+    }
+    .receive_info { 
+        padding: 10px 10px 30px 10px;
+        line-height: 14px;
+        font-size: 12px;
+        color: #a1a1a1;
+        letter-spacing: -0.2px;
+    }
+
+    .leave_btn {
+        line-height: 22px;
+        margin-top: 25px;
+        font-size: 14px;
+        color: #a1a1a1;
+        border-bottom: 1px solid #a1a1a1;
+    }
+}
+
+.radio_box {
+    display: flex;
+    align-items: center;
+    color: #000;
+    font-size: 14px;
+    input[type="radio"] {
+        position: relative;
+        -webkit-appearance: none;
+        width: 14px;
+        height: 14px;
+        color: #a1a1a1;
+        margin-right: 7px;
+        background-color: #ffffff;
+        border: 1px solid #a1a1a1;
+        border-radius: 50%;
+        outline: none;
+        cursor: pointer;
+        &:before {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            content: '';
+            display: block;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+        }
+        &:checked:before {
+            background: #a1a1a1;
+        }
+        &:checked {
+            border-color: #a1a1a1;
+        }
+        &:focus { border-color: #a1a1a1;}
+    }
+    label {
+        font-size: 14px;
+        color: #a1a1a1;
+        cursor: pointer;
+        & + input { margin-left: 25px;}
+    }
+}
+.val_check {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 10px;
+    color: #ff0000;
+    font-size: 12px;
+}
+.receive_val_check {
+    display: inline-block;
+    padding-top: 7px;
+    padding-left: 10px;
+    color: #ff0000;
+    font-size: 12px;
+}
+
+
+//---------------------------------------------
+// media query
+//---------------------------------------------
+
+@media (max-width: 1200px) {
+    .login_wrap {
+        padding-bottom: 6.5rem;
+        padding-top: 5rem;
+        .login_title {
+            font-size: 24px;
+            img { width: 80px}
+        }
+    }
+}
+
+@media (max-width: 720px) {
+    .login_wrap {
+        .pc_none { display: block;}
+    }
+    .form_row {
+        input {
+            height: 5rem;
+            border-color: #cdcdcd;
+        }
+    }
+    .sns_login {
+        .btn {
+            font-size: 1.4rem;
+        }
+    }
+}
+
+@media (max-width: 330px) {
+    .login_wrap {
+        padding: 0 1rem;
+    }
+}

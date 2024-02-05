@@ -1,0 +1,157 @@
+@charset "utf-8";
+@import '_reset';
+@import '_fonts';
+@import '_swiper';
+@import '_mixin';
+@import '_main';
+@import '_layout';
+@import '_search';
+@import '_modal';
+@import '_login';
+@import '_error';
+@import '_notice';
+@import '_event';
+@import '_faq';
+@import '_list';
+@import '_mypage';
+
+.btn_wrap {
+    @include flexbox(center);
+}
+.btn {
+    display: block;
+    width: 130px;
+    height: 40px;
+    line-height: 38px;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 16px;
+    background-color: #191919;
+    text-align: center;
+    &.outline {
+        color: #191919;
+        background-color: #ffffff;
+        border: 1px solid #191919;
+    }
+    &.big {
+        width: 100%;
+        max-width: 300px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 14px;
+        border-radius: 25px;
+        text-align: center;
+    }
+    & + .btn {
+        margin-left: 10px;
+    }
+}
+
+.paging {
+    text-align:center; 
+    font-size:0; 
+    margin-top: 20px;
+    @include flexbox (center);
+    @media (max-width: 720px) {
+        margin-top: 1.2rem;
+    }
+    & a {
+        display: inline-block; 
+        width: 32px; 
+        height: 32px;
+        margin: 0 4px;
+        font-size: 14px; 
+        line-height: 30px;
+        background-repeat: no-repeat;
+        background-position: center;
+        @media (max-width: 720px) {
+            margin: 0;
+            font-size: 1.2rem;
+            background-size: auto 9px;
+        }
+        &.on {
+            font-size: 16px;
+            font-weight: 600;
+            @media (max-width: 720px) {
+                font-size: 1.2rem;
+            }
+        }
+        &.pprev { 
+<<<<<<< HEAD
+            background-image: url("/common/images/ico_paging_pprev.png");
+        }
+        &.prev { 
+            background-image: url("/common/images/ico_paging_prev.png");
+        }
+        &.next { 
+            background-image: url("/common/images/ico_paging_next.png");
+        }
+        &.nnext { 
+            background-image: url("/common/images/ico_paging_nnext.png");
+=======
+            background-image: url("../images/ico_paging_pprev.png");
+        }
+        &.prev { 
+            background-image: url("../images/ico_paging_prev.png");
+        }
+        &.next { 
+            background-image: url("../images/ico_paging_next.png");
+        }
+        &.nnext { 
+            background-image: url("../images/ico_paging_nnext.png");
+>>>>>>> main
+        }
+    }
+} 
+
+// top button
+.btn_top {
+    opacity: 0;
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    width: 40px;
+    height: 40px;
+    box-shadow: 0px 0px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    background-color: #ffffff;
+    @include flexbox(center, center);
+    flex-direction: column;
+    transition: all .2s;
+    font-size: 11px;
+    font-weight: 500;
+    color: #191919;
+    z-index: 1;
+    img {
+        margin-bottom: 3px;
+    }
+    @media (max-width: 720px) {
+        display: none;
+    }
+}
+
+.mt30 { margin-top: 30px !important;}
+.mt0 { margin-top: 0px !important;}
+.pt0 { padding-top: 0px !important;}
+.pb0 { padding-bottom: 0px !important;}
+.dev-todo { display:none;}
+
+// 완료 메세지
+.done_wrap {
+    margin-top: 120px;
+    text-align: center;
+    .done_msg {
+        margin-top: 15px;
+        line-height: 30px;
+        font-size: 24px;
+        font-weight: 500;
+    }
+    @media (max-width: 720px) {
+       margin-top: 10rem;
+       .done_msg {
+            margin-top: 2.5rem;
+            line-height: 2.2rem;
+            font-size: 1.8rem;
+       }
+    }
+}

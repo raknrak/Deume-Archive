@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.chunjae.packages.mapper.PackagesMapper">
+    
+    <insert id="insertPackages" parameterType="kr.co.chunjae.packages.dto.PackagesDTO"
+            useGeneratedKeys="true" keyColumn="idx" keyProperty="idx">
+        INSERT
+        INTO tb_packages(subcate_idx, type_idx, name, source, explanation, display, original, saved, keyword)
+        VALUES(#{subcateIdx}, #{typeIdx}, #{name}, #{source}, #{explanation}, #{display}, #{original}, #{saved}, #{keyword})
+    </insert>
+
+    <select id="selectPackages" parameterType="java.lang.Integer" resultType="kr.co.chunjae.packages.dto.PackagesDTO">
+        SELECT idx, subcate_idx, type_idx, name, source, explanation, display, original, saved, upload_path, register_date,
+        update_date, keyword
+        FROM tb_packages
+        WHERE idx = #{idx}
+    </select>
+
+    <insert id="insertPackagesThumbnailList" parameterType="java.util.Map">
+        INSERT
+        INTO tb_packages_thumbnail(packages_idx, original, saved, orders)
+        VALUES
+        <foreach collection="thumbnailList" item="thumbnail" separator=",">
+            (#{packagesIdx}, #{thumbnail.original}, #{thumbnail.saved}, #{thumbnail.orders})
+        </foreach>
+    </insert>
+</mapper>

@@ -1,0 +1,186 @@
+#thumbnail-file-upload-wrapper {
+    border: 1px dashed gray;
+    padding: 5px;
+    text-align: center;
+    overflow: hidden;
+    height: 120px;
+}
+#video-file-upload-wrapper {
+    border: 1px dashed gray;
+    padding: 5px;
+    text-align: center;
+    overflow: hidden;
+    height: 250px;
+}
+
+#video-file-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.fileItem {
+    margin-right: 20px;
+    cursor: move;
+    display: inline-block;
+}
+
+.fileItem img {
+    width: 100px;
+    height: 100px;
+}
+
+.deleteButton {
+    cursor: pointer;
+    color: red;
+}
+
+.fileItem {
+    position: relative;
+}
+
+.deleteButton {
+    position: absolute;
+}
+
+img.thumb-img {
+    vertical-align: baseline;
+}
+
+.deleteButton {
+    cursor: pointer;
+    color: red;
+    position: absolute;
+    top: -5px; /* 부모 요소의 상단에 배치 */
+    right: -5px; /* 부모 요소의 우측에 배치 */
+    font-weight: bolder;
+}
+
+div.keyword {
+    margin-right: 10px;
+}
+.table-cnt .table-type02 select {
+    width: 220px !important;
+}
+
+.thumb-video {
+    max-width: 100%;
+    max-height: 200px; /* 원하는 높이로 조절 */
+}
+
+.play-button,
+.pause-button {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: white;
+    background-color: #333;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.pause-button {
+    display: none;
+}
+
+.time-display {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px;
+    font-size: 12px;
+}
+
+#thumbnail-file-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.fileItem {
+    margin-right: 20px;
+    cursor: move;
+    display: inline-block;
+}
+
+.fileItem img {
+    width: 100px;
+    height: 100px;
+}
+
+.deleteButton {
+    cursor: pointer;
+    color: red;
+}
+
+.fileItem {
+    position: relative;
+}
+
+.deleteButton {
+    position: absolute;
+}
+
+img.thumb-img {
+    vertical-align: baseline;
+}
+
+.deleteButton {
+    font-weight: bolder;
+}
+
+div.keyword {
+    margin-right: 10px;
+}
+.table-cnt .table-type02 select {
+    width: 220px !important;
+}
+
+#contents-file-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.fileItem {
+    margin-right: 20px;
+    cursor: move;
+    display: inline-block;
+}
+
+.fileItem img {
+    width: 100px;
+    height: 100px;
+}
+
+.deleteButton {
+    cursor: pointer;
+    color: red;
+}
+
+.fileItem {
+    position: relative;
+}
+
+.deleteButton {
+    position: absolute;
+}
+
+img.thumb-img {
+    vertical-align: baseline;
+}
+
+.deleteButton {
+    font-weight: bolder;
+}
+
+div.keyword {
+    margin-right: 10px;
+}
+.table-cnt .table-type02 select {
+    width: 220px !important;
+}

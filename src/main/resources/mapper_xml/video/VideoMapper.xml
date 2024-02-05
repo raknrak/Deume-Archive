@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.chunjae.video.mapper.VideoMapper">
+    <!--useGeneratedKeys(auto_increment), keyColumn(DB), keyProperty(DTO)-->
+    <insert id="saveVideo" parameterType="kr.co.chunjae.video.dto.VideoDTO"
+            useGeneratedKeys="true" keyColumn="idx" keyProperty="idx">
+        INSERT
+        INTO tb_video(subcate_idx, type_idx, name, source, explanation, display, original, saved, keyword)
+        VALUES(#{subcateIdx}, #{typeIdx}, #{name}, #{source}, #{explanation}, #{display}, #{original}, #{saved}, #{keyword})
+    </insert>
+    <!--<select id="selectVideo" parameterType="Integer" resultType="kr.co.chunjae.video.dto.VideoDTO">
+        SELECT idx, subcate_idx, type_idx, name, source, explanation, display, original, saved, upload_path, register_date,
+                update_date, keyword
+        FROM tb_video
+        WHERE idx=#{idx}
+    </select>-->
+
+    <insert id="videoThumbnailsList" parameterType="Map">
+        INSERT
+        INTO tb_video_thumbnail(video_idx, original, saved, orders)
+        VALUES
+        <foreach collection="thumbnailList" item="thumbnail" separator=",">
+            (#{videoIdx}, #{thumbnail.original}, #{thumbnail.saved}, #{thumbnail.orders})
+        </foreach>
+    </insert>
+
+    <select id="videoList" resultType="kr.co.chunjae.video.dto.VideoDTO">
+        SELECT name, register_date
+        from tb_video
+    </select>
+</mapper>

@@ -1,0 +1,670 @@
+/* modal */
+body {
+    &.ovh {
+        overflow: hidden;
+        padding-right: 17px;
+    }
+}
+
+.modal_backdrop {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.65);
+	z-index: 999998 !important;
+	-webkit-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+}
+.modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 999999 !important;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+	outline: 0;
+	-webkit-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+	.modal_content {
+		position: relative;
+        min-height: 100px;
+        margin: 0 auto;
+		color: #191919;
+		outline: none;
+		border-radius: 10px;
+		box-sizing: border-box;
+        background-color: #ffffff;
+        border-radius: 8px;
+        &.alert {
+            width: 600px;
+            padding: 30px 0;
+            text-align: center;
+        }
+        .pop_msg {
+            font-size: 18px;
+            font-weight: 500;
+            margin: 27px 0 30px;
+            line-height: 22px;
+            padding: 0 10px;
+            word-break: keep-all;
+        }
+		.modal_close {
+			position: absolute;
+			top: 29px;
+			right: 29px;
+		}
+	}
+    .modal_close_dim {
+        position: fixed;
+        top: 50px;
+        right: 50px;
+        width: 30px;
+        height: 30px;
+    }
+}
+.popup_title {
+    > h4 {
+        margin-bottom: 25px;
+        font-size: 30px;
+        font-weight: bold;
+    }
+}
+// 공유하기 팝업
+.share {
+    width: 600px;
+    padding: 30px 40px;
+    text-align: center;
+    .share_txt { 
+        line-height: 22px;
+        margin: 27px 0 30px;
+        padding: 0 10px;
+        font-size: 20px;
+        font-weight: 500;
+    }
+    .share_msg {
+        margin: 10px 0 30px;
+        font-size: 16px;
+        font-weight: 500;
+        >img {
+            margin-left: 5px;
+        }
+    }
+    .link_area {
+        padding: 7px 20px;
+        border-radius: 5px;
+        border: 1px solid #dbdbdb;
+        &.btn_wrap {
+            justify-content: space-between;
+        }
+        .url_link {
+            @include ellipsis;
+            width: calc(100% - 175px);
+            font-size: 14px;
+            text-align: left;
+            font-weight: 500;
+        }
+        .btn {
+            width: 68px;
+            height: 25px;
+            font-size: 15px;
+            line-height: 25px;
+            &.copy_end {
+                width: 96px;
+                img {
+                    width: 12px;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+    .share_comment {
+        margin-top: 20px;
+        color: #a1a1a1;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18px;
+    }
+}
+// 스크랩 팝업 
+.scrap {
+    width: 600px;
+    padding: 0;
+    text-align: center;
+    .popup_title {
+        width: 100%;
+        padding: 19px 38px 20px;
+        text-align: left;
+        border-bottom: 1px solid #dbdbdb;
+        &.btn_wrap {
+            justify-content: space-between;
+        }
+        > h4 {
+            width: calc(100% - 115px);
+            margin-bottom: 0;
+        }
+        > .btn {
+            width: 80px;
+            height: 36px;
+            margin-right: 20px;
+            font-size: 18px;
+            line-height: 36px;
+            color: #191919;
+            background-color: #f3f4f5;
+            &:hover {
+                color: #ffffff;
+                background-color: #191919;
+            }
+        }
+    }
+    .scrap_area {
+        @include scrollbar;
+        min-height: 460px;
+        max-height: 520px;
+        margin-right: 26.5px;
+        &::-webkit-scrollbar-track {
+            margin: 10px 0;
+        }
+        .none_folder {
+            width: calc(100% + 30px);
+            color: #a1a1a1;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 460px;
+        }
+        > .scrap_check_box {
+            height: 57px;
+            padding: 0 36px;
+            margin-right: 26.5px;
+            line-height: 57px;
+            text-align: left;
+            &.on {
+                background-color: #f3f4f5;
+            }
+            input[type="checkbox"] {
+                height: 26px;
+                width: 26px;
+                margin-top: -3px;
+                border: 1px solid #dbdbdb;
+                background: #ffffff;
+                appearance: none;
+                vertical-align: middle;
+                cursor: pointer;
+                outline: 0;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                &:checked {
+<<<<<<< HEAD
+                    background: url('/common/images/ico_checkbox_03_on.png') no-repeat;
+=======
+                    background: url('../images/ico_checkbox_03_on.png') no-repeat;
+>>>>>>> main
+                    border: 0;
+                }
+                & + label {
+                    font-size: 20px;
+                    padding-left: 12px;
+                    font-weight: 500;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .folder_plus {
+        display: block;
+        height: 70px;
+        border-radius: 0 0 8px 8px;
+        color: #ffffff;
+        font-size: 18px;
+        line-height: 70px;
+        background-color: #191919;
+        img {
+            margin : -5px 10px 0 0;
+            vertical-align: middle;
+        }
+        &.off {
+            display: none;
+        }
+    }
+    .make_folder {
+        display: none;
+        position: relative;
+        padding: 18px 40px 30px;
+        border-top: 1px solid #dbdbdb;
+        label {
+            display: block;
+            font-size: 16px;
+            font-weight: 500;
+            text-align: left;
+        }
+        input {
+            width: 100%;
+            padding: 5px 0;
+            margin-top: 13px;
+            border: 0;
+            border-bottom: 1px solid #191919;
+        }
+        .warning_ment {
+            margin-top: 4px;
+            color: #f00;
+            font-size: 14px;
+            text-align: left;
+        }
+        .text_counter {
+            position: absolute;
+            top: 83px;
+            right: 40px;
+            font-size: 14px;
+        }
+        > .btn {
+            width: 80px;
+            height: 36px;
+            margin-top: 25px;
+            margin-left: auto;
+            font-size: 18px;
+            line-height: 36px;
+            color: #191919;
+            background-color: #f3f4f5;
+            &:hover {
+                color: #ffffff;
+                background-color: #191919;
+            }
+        }
+        &.on {
+            display: block;
+        }
+    }
+}
+// 스크랩 저장 버튼 클릭 시
+.popup_alarm {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 70px;
+    width: 350px;
+    height: 60px;
+    border-radius: 10px 10px 0 0;
+    background-color: #191919;
+    p {
+        color: #ffffff;
+        font-size: 18px;
+        line-height: 60px;
+        text-align: center;
+        img {
+            margin-right: 10px;
+        }
+    }
+}
+// 카테고리 더보기 팝업
+.preview {
+    width: 600px;
+    padding: 25px 30px 40px 40px;
+    text-align: center;
+    .popup_title {
+        font-size: 30px;
+        text-align: left;
+    }
+    .notice_view_body {
+        @include scrollbar;
+        overflow-y: scroll;
+        max-height: 475px;
+        .photo_info {
+            height: auto;
+            padding: 0;
+            margin: 0;
+            margin-right: 5px;
+            .info_text{
+                align-items: start;
+                margin-bottom: 0;
+                border-bottom: 1px solid #dbdbdb;
+                &.title {
+                    > p {
+                        font-weight: bold;
+                    }
+                }
+                >span {
+                    display: inline-block;
+                    line-height: 50px;
+                }
+                > p {
+                    overflow: visible;
+                    display: flex;
+                    flex-wrap: wrap;
+                    padding: 13px 0;
+                    line-height: 24px;
+                    font-weight: 400;
+                    text-align: left;
+                    white-space: normal;
+                }
+                .tag_list {
+                    padding: 12.5px 0 6.5px;
+                    span {
+                        margin-bottom: 6px;
+                    }
+                }
+            }
+            .photo_route {
+                max-height: none;
+                margin: 20px 0;
+            }
+        }
+    }
+}
+
+// 주제/교과서 필터링 팝업
+.filter {
+    width: 1200px;
+    padding: 0 100px 20px;
+    .modal_close {
+        top: 20px !important;
+        right: 20px !important;
+        @include flexbox(center);
+        width: 30px;
+        height: 30px;
+    }
+    .tab {
+        overflow: hidden;
+        border-bottom: 1px solid #a1a1a1;
+
+        .tablinks {
+            float: left;
+            width: 140px;
+            padding: 18px 16px 13px;
+            transition: 0.3s;
+            color: #a1a1a1;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+        }
+        .tablinks.active {
+            border-bottom: 1px solid #191919;
+            color: #191919;
+        }
+    }
+    .tabcontent {
+        display: none;
+        padding: 15px 0 30px;
+        border-bottom: 1px solid #dbdbdb;
+        .select {
+            height: 40px;
+            line-height: 40px;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            background-color: #f3f4f5;
+            border-radius: 5px;
+            span {
+                color: #a1a1a1;
+            }
+        }
+        .category {
+            @include flexbox (start, start);
+            padding-top: 5px;
+            h5 {
+                min-width: 88px;
+                padding-top: 10px;
+                font-size: 18px;
+                color: #191919;
+                font-weight: 500;
+            }
+        }
+        .cate_list {
+            @include flexbox (start, center);
+            flex-wrap: wrap;
+            max-width: 900px;
+
+            .radio_button {
+                input[type="radio"] {
+                display: none;
+                }
+                input[type="radio"] + span {
+                    display: inline-block;
+                    width: 80px;
+                    height: 40px;
+                    line-height: 37px;
+                    margin: 0 10px 10px 0;
+                    color: #a1a1a1;
+                    border: 1px solid #dbdbdb;
+                    background-color: #ffffff;
+                    border-radius: 6px;
+                    text-align: center;
+                    cursor: pointer;
+                }
+                input[type="radio"]:checked + span {
+                    background-color: #f3f4f5;
+                    border: 1px solid #191919;
+                    color: #191919;
+                }
+            }
+        }
+        .unit_list {
+            border: 1px solid #dbdbdb;
+            width: 100%;
+            padding: 10px 0;
+            margin-bottom: 10px;
+            li {
+                font-size: 16px;
+                line-height: 24px;
+                color: #a1a1a1;
+            }
+            .radio_button {
+                input[type="radio"] {
+                display: none;
+                }
+                input[type="radio"] + span {
+                    display: inline-block;
+                    width: 100%;
+                    height: 28px;
+                    line-height: 28px;
+                    margin: 0 10px 10px 0;
+                    color: #a1a1a1;
+                    cursor: pointer;
+                }
+                input[type="radio"] + span {
+                    margin-bottom: 0;
+                    padding-left: 10px;
+                }
+                input[type="radio"]:checked + span {
+                    background-color: #f3f4f5;
+                    color: #191919;
+                }
+            }
+        }
+    }
+    .btn_wrap {
+        margin-top: 20px;
+        .btn { 
+            width: 100px;
+            @include flexbox (center);
+            img { margin-right: 7px; margin-top: 2px;}
+            &.outline { border-color: #a1a1a1;}
+        }
+    }
+}
+.pc_none { display: none;}
+
+//---------------------------------------------
+// media query
+//---------------------------------------------
+
+@media (max-width:1200px) {
+    .preview {
+        .popup_title {
+            h4 {
+                font-size: 30px;
+            }
+        }
+        .notice_view_body {
+            .photo_info {
+                &::before {
+                    display: none;
+                }
+                .info_text{
+                    display: flex;
+                    >span {
+                        width: 70px;
+                        font-size: 16px;
+                    }
+                    > p {
+                        font-size: 18px;
+                    }
+                }
+            }
+            .photo_route {
+                display: block;
+            }
+        }
+    }
+    .popup_title {
+        > h4 {
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+    }
+    // 스크랩 저장 버튼 클릭 시
+    .popup_alarm {
+        left: 20px;
+    }
+}
+@media (max-width:720px) {
+    body.ovh { padding-right: 0;}
+    
+    .modal {
+        .modal_content {
+            &.alert {
+                width: 34rem;
+            }
+            .modal_close {
+                top: 2rem;
+			    right: 2rem;
+            }
+        }
+    }
+    .mo_none {
+        display: none;
+    }
+    .pc_none {
+        display: block;
+    }
+    .popup_title {
+        > h4 {
+            margin-bottom: 3rem;
+            font-size: 2.6rem;
+        }
+    }
+    // 공유하기 팝업
+    .share {
+        width: 34rem;
+        padding: 3rem 1rem;
+        .pop_msg {
+            font-size: 2rem;
+        }
+        .share_msg {
+            font-size: 1.4rem;
+            >img {
+                margin-top: -.4rem;
+                vertical-align: middle;
+            }
+        }
+        .link_area {
+            padding: .7rem 1rem;
+        }
+        .share_comment {
+            margin-top: 3rem;
+        }
+    }
+    // 스크랩 팝업 
+    .scrap {
+        width: 34rem;
+        .popup_title {
+            padding: 2.3rem 1.5rem 2.5rem;
+            border-bottom: .05 solid #dbdbdb;
+            > .btn {
+                margin-right: 3.3rem;
+                font-size: 1.4rem;
+            }
+        }
+        .scrap_area {
+            min-height: 14.25rem;
+            max-height: 46.25rem;
+            margin-right: 2rem;
+            &::-webkit-scrollbar {
+                width: .25rem;
+            }
+            .none_folder {
+                padding-left: 2rem;
+                font-size: 1.5rem;
+                line-height: 14.25rem;
+            }
+            > .scrap_check_box {
+                height: 5.5rem;
+                padding: 0 1rem;
+                margin-right: 2rem;
+                line-height: 5.5rem;
+                input[type="checkbox"] {
+                    height: 2.5rem;
+                    width: 2.5rem;
+                    &:checked {
+                        background-size: 100% 100%;
+                    }
+                    & + label {
+                        font-size: 1.6rem;
+                        padding-left: 1rem;
+                    }
+                }
+            }
+        }
+        .folder_plus {
+            height: 6rem;
+            font-size: 1.6rem;
+            line-height: 6rem;
+            img {
+                margin : -.3rem 1rem 0 0;
+                width: .85rem;
+            }
+        }
+        .make_folder {
+            padding: 1.2rem 1.5rem 1.6rem;
+            input {
+                margin-top: .3rem;
+            }
+            .text_counter {
+                top: 6.7rem;
+                right: 1.5rem;
+            }
+            > .btn {
+                margin-top: 1.24rem;
+                font-size: 1.4rem;
+            }
+        }
+    }
+    // 스크랩 저장 버튼 클릭 시
+    .popup_alarm {
+        width: 34rem;
+        left: 50%;
+        transform: translateX(-50%);
+        p {
+            font-size: 1.4rem;
+            line-height: 6rem;
+            img {
+                margin-right: .5rem;
+            }
+        }
+    }
+}
+
+@media (max-width:340px) {
+    .modal {
+        .modal_content {
+            &.alert {
+                width: 95%;
+            }
+        }
+    }
+}
